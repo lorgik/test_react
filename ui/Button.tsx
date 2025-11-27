@@ -9,7 +9,7 @@ const Button = ({ children, ...props }: ButtonProps) => {
     return (
         <button
             {...props}
-            className="bg-blue-500 disabled:bg-blue-300 text-white px-5 py-3 font-medium text-lg rounded-lg cursor-pointer disabled:cursor-not-allowed hover:bg-blue-700 transition"
+            className="bg-blue-500 disabled:bg-blue-300 text-white px-5 py-3 font-medium text-lg rounded-xl cursor-pointer disabled:cursor-not-allowed hover:bg-blue-700 transition"
         >
             {children}
         </button>
