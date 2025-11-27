@@ -74,7 +74,7 @@ _University of Helsinki / fullstackopen.com_
 
 **Интерактивный каталог продуктов** | Next.js, TypeScript, Redux Toolkit
 
-🔗 [Ссылка на GitHub / Demo]
+🔗 [Ссылка на GitHub](https://github.com/lorgik/test_react) / [Demo](https://lorgik.github.io/test_react)
 
 -   Реализован SPA с маршрутизацией (/products, /products/:id, /create-product, /edit-product).
 -   Все данные (включая избранное, удалённые и созданные карточки) хранятся в Redux-сторе.
