@@ -6,9 +6,9 @@ import { useAppSelector } from "@/store/hooks"
 import Link from "next/link"
 import Title from "@/ui/Title"
 import Button from "@/ui/Button"
+import FlexRow from "@/ui/FlexRow"
 import MediaList from "@/components/MediaList"
 import ProductImage from "@/components/ProductImage"
-import FlexRow from "@/ui/FlexRow"
 
 interface ProductPageProps {
     params: Promise<{ id: string }>
@@ -72,9 +72,12 @@ export default function ProductPage({ params }: ProductPageProps) {
 
     return (
         <>
-            <Link href="/">
-                <Button>Return to home</Button>
-            </Link>
+            <FlexRow>
+                <Title>Product</Title>
+                <Link href="/">
+                    <Button>Return to home</Button>
+                </Link>
+            </FlexRow>
 
             <div className="flex flex-row gap-10 items-start mt-10">
                 <ProductImage src={product.imageUrl} />

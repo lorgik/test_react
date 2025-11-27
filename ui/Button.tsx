@@ -1,15 +1,26 @@
+type ButtonColor = "blue" | "green" | "red"
+type ButtonType = "button" | "submit" | "reset"
+
 interface ButtonProps {
     children: React.ReactNode
-    type?: "button" | "submit" | "reset"
+    color?: ButtonColor
+    type?: ButtonType
     disabled?: boolean
     onClick?: () => void
 }
 
-const Button = ({ children, ...props }: ButtonProps) => {
+const buttonColorClasses: Record<ButtonColor, string> = {
+    blue: "bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300",
+    green: "bg-green-500 hover:bg-green-600 disabled:bg-green-300",
+    red: "bg-red-500 hover:bg-red-600 disabled:bg-red-300",
+}
+
+const Button = ({ children, color = "blue", disabled = false, ...props }: ButtonProps) => {
     return (
         <button
             {...props}
-            className="bg-blue-500 disabled:bg-blue-300 text-white px-5 py-3 font-medium text-lg rounded-xl cursor-pointer disabled:cursor-not-allowed hover:bg-blue-600 transition"
+            disabled={disabled}
+            className={`text-white px-5 py-3 font-medium text-lg rounded-xl cursor-pointer disabled:cursor-not-allowed transition ${buttonColorClasses[color]}`}
         >
             {children}
         </button>

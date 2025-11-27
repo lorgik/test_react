@@ -54,7 +54,9 @@ export default function CreateProductPage() {
             <form className="flex flex-col gap-5 mt-10 text-black max-w-max" onSubmit={handleSubmit}>
                 <Input name="name" value={name} placeholder="Name" handleChange={(e) => setName(e.target.value)} />
                 <Input name="film" value={film} placeholder="Film" handleChange={(e) => setFilm(e.target.value)} />
-                <Button type="submit">Create</Button>
+                <Button type="submit" color="green" disabled={!Boolean(name) || !Boolean(film)}>
+                    Create
+                </Button>
             </form>
         </>
     )

@@ -73,8 +73,10 @@ export default function EditProductPage() {
                     <Input name="film" value={film} handleChange={(e) => setFilm(e.target.value)} placeholder="Film" />
 
                     <div className="flex gap-3">
-                        <Button type="submit">Update</Button>
-                        <Button type="button" onClick={() => setChoosenProduct(null)}>
+                        <Button type="submit" color="green" disabled={!Boolean(name) || !Boolean(film)}>
+                            Update
+                        </Button>
+                        <Button type="button" color="red" onClick={() => setChoosenProduct(null)}>
                             Cancel
                         </Button>
                     </div>
