@@ -9,6 +9,7 @@ import Title from "@/ui/Title"
 import Button from "@/ui/Button"
 import Input from "@/ui/Input"
 import ProductCard from "@/components/ProductCard"
+import FlexRow from "@/ui/FlexRow"
 
 export default function EditProductPage() {
     const [choosenProduct, setChoosenProduct] = useState<Product | null>(null)
@@ -46,13 +47,13 @@ export default function EditProductPage() {
     }
 
     return (
-        <div className="pt-10 px-5">
-            <div className="flex items-center flex-wrap gap-10">
+        <>
+            <FlexRow>
                 <Title>Edit Product</Title>
                 <Link href={"/"}>
                     <Button>Return to home</Button>
                 </Link>
-            </div>
+            </FlexRow>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 mt-10">
                 {createdProducts.map((p) => (
@@ -70,6 +71,7 @@ export default function EditProductPage() {
                 <form className="flex flex-col gap-5 mt-10 text-black max-w-max" onSubmit={handleSubmit}>
                     <Input name="name" value={name} handleChange={(e) => setName(e.target.value)} placeholder="Name" />
                     <Input name="film" value={film} handleChange={(e) => setFilm(e.target.value)} placeholder="Film" />
+
                     <div className="flex gap-3">
                         <Button type="submit">Update</Button>
                         <Button type="button" onClick={() => setChoosenProduct(null)}>
@@ -78,6 +80,6 @@ export default function EditProductPage() {
                     </div>
                 </form>
             )}
-        </div>
+        </>
     )
 }

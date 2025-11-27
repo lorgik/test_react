@@ -1,4 +1,3 @@
-// app/products/page.tsx
 "use client"
 
 import { useState } from "react"
@@ -8,6 +7,8 @@ import Title from "@/ui/Title"
 import Button from "@/ui/Button"
 import ProductList from "@/components/ProductList"
 import Search from "@/components/Search"
+import PaginationControls from "@/components/PaginationControls"
+import FlexRow from "@/ui/FlexRow"
 
 export default function ProductsPage() {
     const [page, setPage] = useState(1)
@@ -43,19 +44,11 @@ export default function ProductsPage() {
         : filteredByFavorite
 
     if (isLoading) {
-        return (
-            <div className="py-10 px-5">
-                <Title>Loading...</Title>
-            </div>
-        )
+        return <Title>Loading...</Title>
     }
 
     if (error) {
-        return (
-            <div className="py-10 px-5">
-                <Title>Failed to load characters</Title>
-            </div>
-        )
+        return <Title>Failed to load characters</Title>
     }
 
     function handlePagePrevious() {
@@ -69,29 +62,26 @@ export default function ProductsPage() {
     const isNextDisabled = page >= (totalPages || 1) || isFetching
 
     return (
-        <div className="py-10 px-5">
-            <div className="flex items-center justify-between gap-10 flex-wrap">
+        <>
+            <FlexRow className="justify-between">
                 <div className="flex items-center gap-10">
                     <Title>Products</Title>
                     <Button onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}>
                         {showFavoritesOnly ? "Show All" : "Show Favorites"}
                     </Button>
                 </div>
+
                 <Search onSearch={setSearchTerm} />
-            </div>
+            </FlexRow>
+
             <ProductList products={filteredBySearch} />
 
-            <div className="grid grid-cols-3 gap-4 mt-10 max-w-max mx-auto">
-                <Button onClick={handlePagePrevious} disabled={isPreviousDisabled}>
-                    Previous
-                </Button>
-                <span className="self-center text-center">
-                    Page {page} of {totalPages || 1}
-                </span>
-                <Button onClick={handlePageNext} disabled={isNextDisabled}>
-                    Next
-                </Button>
-            </div>
-        </div>
+            <PaginationControls
+                currentPage={page}
+                totalPages={totalPages || 1}
+                isFetching={isFetching}
+                onPageChange={setPage}
+            />
+        </>
     )
 }

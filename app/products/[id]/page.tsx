@@ -8,6 +8,7 @@ import Title from "@/ui/Title"
 import Button from "@/ui/Button"
 import MediaList from "@/components/MediaList"
 import ProductImage from "@/components/ProductImage"
+import FlexRow from "@/ui/FlexRow"
 
 interface ProductPageProps {
     params: Promise<{ id: string }>
@@ -22,18 +23,18 @@ export default function ProductPage({ params }: ProductPageProps) {
 
     if (productFromStore) {
         return (
-            <div className="pt-10 min-h-screen px-5">
-                <div className="flex items-center gap-10 mb-6">
-                    <Link href="/">
-                        <Button>Return to home</Button>
-                    </Link>
-                </div>
+            <>
+                <Link href="/">
+                    <Button>Return to home</Button>
+                </Link>
 
                 <div className="flex flex-row gap-10 items-start mt-10">
                     <ProductImage src="/stub.png" />
+
                     <div className="mt-2">
                         <Title>{productFromStore.name}</Title>
-                        <div className="flex gap-10 mt-5 flex-wrap">
+
+                        <div className="flex flex-col flex-wrap gap-10 mt-5">
                             <MediaList title="Films" items={productFromStore.films} />
                             <MediaList title="Short Films" items={productFromStore.shortFilms} />
                             <MediaList title="TV Shows" items={productFromStore.tvShows} />
@@ -41,7 +42,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         )
     }
 
@@ -49,43 +50,39 @@ export default function ProductPage({ params }: ProductPageProps) {
 
     if (isLoading) {
         return (
-            <div className="pt-10 px-5">
-                <div className="flex items-center gap-10">
-                    <Title>Loading...</Title>
-                    <Link href="/">
-                        <Button>Return to home</Button>
-                    </Link>
-                </div>
-            </div>
+            <FlexRow>
+                <Title>Loading...</Title>
+                <Link href="/">
+                    <Button>Return to home</Button>
+                </Link>
+            </FlexRow>
         )
     }
 
     if (error || !product) {
         return (
-            <div className="pt-10 px-5">
-                <div className="flex items-center gap-10">
-                    <Title>Character not found</Title>
-                    <Link href="/">
-                        <Button>Return to home</Button>
-                    </Link>
-                </div>
-            </div>
+            <FlexRow>
+                <Title>Character not found</Title>
+                <Link href="/">
+                    <Button>Return to home</Button>
+                </Link>
+            </FlexRow>
         )
     }
 
     return (
-        <div className="pt-10 min-h-screen px-5">
-            <div className="flex items-center gap-10 mb-6">
-                <Link href="/">
-                    <Button>Return to home</Button>
-                </Link>
-            </div>
+        <>
+            <Link href="/">
+                <Button>Return to home</Button>
+            </Link>
 
             <div className="flex flex-row gap-10 items-start mt-10">
                 <ProductImage src={product.imageUrl} />
+
                 <div className="mt-2">
                     <Title>{product.name}</Title>
-                    <div className="flex gap-10 mt-5 flex-wrap">
+
+                    <div className="flex flex-col flex-wrap gap-10 mt-5">
                         <MediaList title="Films" items={product.films} />
                         <MediaList title="Short Films" items={product.shortFilms} />
                         <MediaList title="TV Shows" items={product.tvShows} />
@@ -93,6 +90,6 @@ export default function ProductPage({ params }: ProductPageProps) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

@@ -1,11 +1,13 @@
 import Link from "next/link"
 import Button from "@/ui/Button"
 import Title from "@/ui/Title"
+import FlexRow from "@/ui/FlexRow"
 
 export default function HomePage() {
     return (
-        <div className="flex items-center flex-wrap gap-10 pt-10 px-5">
+        <FlexRow>
             <Title>Home</Title>
+
             <div className="flex items-center flex-wrap gap-5">
                 <Link href={"/products"}>
                     <Button>Open products</Button>
@@ -17,6 +19,6 @@ export default function HomePage() {
                     <Button>Edit product</Button>
                 </Link>
             </div>
-        </div>
+        </FlexRow>
     )
 }

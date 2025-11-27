@@ -18,7 +18,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${nunito.variable} antialiased`}>
-                <div className="container mx-auto">
+                <div className="py-10 px-5 min-h-screen container mx-auto">
                     <Providers>{children}</Providers>
                 </div>
             </body>
