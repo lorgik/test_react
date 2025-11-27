@@ -34,13 +34,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <div className="overflow-hidden relative">
             <div
-                className="absolute top-2 left-2 p-2 bg-white rounded-full opacity-40 hover:opacity-100 cursor-pointer"
+                className="absolute top-2 left-2 p-2 bg-white rounded-full opacity-40 hover:opacity-100 cursor-pointer transition"
                 onClick={(e) => handleLike(e, product._id)}
             >
                 <IconHeart filled={isFavourite} />
             </div>
             <div
-                className="absolute top-2 right-2 p-2 bg-white rounded-full opacity-40 hover:opacity-100 cursor-pointer"
+                className="absolute top-2 right-2 p-2 bg-white rounded-full opacity-40 hover:opacity-100 cursor-pointer transition"
                 onClick={(e) => handleDelete(e, product._id)}
             >
                 <IconDelete />
