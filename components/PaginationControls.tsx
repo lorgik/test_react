@@ -31,12 +31,12 @@ export default function PaginationControls({
     if (totalPages <= 1) return null
 
     return (
-        <div className="grid grid-cols-3 gap-4 mt-10 max-w-max mx-auto">
+        <div className="grid grid-cols-3 gap-4 mt-10 min-w-max mx-auto">
             <Button onClick={handlePrevious} disabled={isPreviousDisabled}>
                 Previous
             </Button>
-            <span className="self-center text-center">
-                Page {currentPage} of {totalPages}
+            <span className="self-center text-center text-[18px] font-medium bg-[var(--background)] px-6 py-3 rounded-xl">
+                {currentPage} / {totalPages}
             </span>
             <Button onClick={handleNext} disabled={isNextDisabled}>
                 Next

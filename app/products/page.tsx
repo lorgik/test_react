@@ -74,14 +74,18 @@ export default function ProductsPage() {
                 <Search onSearch={setSearchTerm} />
             </FlexRow>
 
-            <ProductList products={filteredBySearch} />
+            <div className="mb-25">
+                <ProductList products={filteredBySearch} />
+            </div>
 
-            <PaginationControls
-                currentPage={page}
-                totalPages={totalPages || 1}
-                isFetching={isFetching}
-                onPageChange={setPage}
-            />
+            <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2">
+                <PaginationControls
+                    currentPage={page}
+                    totalPages={totalPages || 1}
+                    isFetching={isFetching}
+                    onPageChange={setPage}
+                />
+            </div>
         </>
     )
 }

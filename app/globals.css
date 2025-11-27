@@ -31,3 +31,8 @@ h3 {
 input {
     color: #171717;
 }
+
+img {
+    user-select: none;
+    pointer-events: none;
+}

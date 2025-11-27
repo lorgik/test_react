@@ -20,7 +20,7 @@ const Button = ({ children, color = "blue", disabled = false, ...props }: Button
         <button
             {...props}
             disabled={disabled}
-            className={`text-white px-5 py-3 font-medium text-lg rounded-xl cursor-pointer disabled:cursor-not-allowed transition ${buttonColorClasses[color]}`}
+            className={`text-white min-w-max px-5 py-3 font-medium text-lg rounded-xl cursor-pointer disabled:cursor-not-allowed transition ${buttonColorClasses[color]}`}
         >
             {children}
         </button>
